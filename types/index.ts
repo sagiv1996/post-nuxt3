@@ -9,4 +9,9 @@ declare global {
     title: String;
     body: String;
   }
+
+  interface postCardAction {
+    label: String;
+    path: String;
+  }
 }
