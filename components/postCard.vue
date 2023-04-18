@@ -5,7 +5,7 @@
             {{ post.body }}
         </v-card-text>
         <v-card-actions>
-            <v-btn :to="`${action.path}`">{{ action.label }}</v-btn>
+            <v-btn v-for="(action, ind) in actions" :to="`${action.path}`" :key="ind">{{ action.label }}</v-btn>
         </v-card-actions>
 
     </v-card>
@@ -14,10 +14,7 @@
 
 interface Props {
     post: Post
-    action: {
-        label: String,
-        path: String
-    }
+    actions: postCardAction[]
 }
 const { post } = defineProps<Props>()
 </script>

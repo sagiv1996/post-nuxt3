@@ -3,7 +3,9 @@
     <template v-else-if="error"><v-card-title title="Error" /></template>
     <template v-else>
         <template v-for="post in data">
-            <post-card :action="{ label: 'Open', path: `/card/${post.id}` }" :post="post" />
+            <post-card
+                :actions="[{ label: 'Open', path: `/card/${post.id}` }, { label: 'More Posts by this user', path: `/card/user-id-${post.userId}` }]"
+                :post="post" />
         </template>
     </template>
 </template>

@@ -1,14 +1,14 @@
 <template>
     <template v-if="pending"> Loading...</template>
     <template v-else-if="error">Error</template>
-    <post-card
-        :actions="[{ label: 'back', path: '/' }, { label: 'More Posts by this user', path: `/card/user-id-${posts[0].userId}` }]"
-        v-else-if="posts" :post="posts[0]" />
+    <template v-else v-for="post in posts">
+        <post-card :actions="[{ label: 'Back', path: `/` }, { label: 'Open', path: `/card/${post.id}` }]" :post="post" />
+    </template>
 </template>
 <script setup lang="ts">
 const route = useRoute()
 const { data: posts, pending, error } = await useFetch<Post[]>('https://jsonplaceholder.typicode.com/posts', {
-    query: { id: route.params.id },
+    query: { userId: route.params.userId },
 
 })
 </script>
