@@ -9,8 +9,8 @@
 </template>
 <script setup lang="ts">
 const route = useRoute()
-const { data: posts, pending, error } = await useFetch<Post[]>('https://jsonplaceholder.typicode.com/posts', {
-    query: { userId: route.params.userId },
-
-})
+const { data: posts, pending, error }
+    = await useAsyncData<Post[]>(
+        () => $fetch('https://jsonplaceholder.typicode.com/posts', { query: { userId: route.params.userId } }),
+    )
 </script>
