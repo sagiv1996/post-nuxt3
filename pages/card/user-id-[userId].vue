@@ -1,9 +1,11 @@
 <template>
     <template v-if="pending"> Loading...</template>
     <template v-else-if="error">Error</template>
-    <template v-else v-for="post in posts">
-        <post-card :actions="[{ label: 'Back', path: `/` }, { label: 'Open', path: `/card/${post.id}` }]" :post="post" />
-    </template>
+    <v-row v-else>
+        <v-col v-for="post in posts"><post-card
+                :actions="[{ label: 'Back', path: `/` }, { label: 'Open', path: `/card/${post.id}` }]"
+                :post="post" /></v-col>
+    </v-row>
 </template>
 <script setup lang="ts">
 const route = useRoute()
