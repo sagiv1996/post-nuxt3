@@ -1,6 +1,20 @@
 <template>
-    <v-card>
-        <v-card-title>Hello </v-card-title>
-        <sey-hello />
-    </v-card>
+    <template v-if="pending"><v-card-title title="Loading...." /></template>
+    <template v-else-if="error"><v-card-title title="Error" /></template>
+    <template v-else>
+        <template v-for="post in data">
+            <PostCard :post="post" />
+        </template>
+    </template>
 </template>
+
+<script setup lang="ts">
+
+
+
+
+const { data, pending, error }
+    = await useAsyncData<Post[]>(
+        () => $fetch('https://jsonplaceholder.typicode.com/posts'),
+    )
+</script>
