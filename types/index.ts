@@ -10,8 +10,17 @@ declare global {
     body: String;
   }
 
-  interface postCardAction {
+  interface PostCardAction {
     label: String;
     path: String;
+  }
+
+  interface User {
+    id: Number;
+    name: String;
+    username: String;
+    phone: String;
+    website: String;
+    email: String;
   }
 }
