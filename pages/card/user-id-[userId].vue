@@ -10,13 +10,14 @@
 </template>
 <script setup lang="ts">
 const route = useRoute()
+const config = useRuntimeConfig()
 const { data: posts, pending: loadingPosts, error: errorPosts }
     = await useAsyncData<Post[]>(
-        () => $fetch('https://jsonplaceholder.typicode.com/posts', { query: { userId: route.params.userId } }),
+        () => $fetch(`${config.public.apiBase}/posts`, { query: { userId: route.params.userId } }),
     )
 const { data: users, pending: loadingUsers, error: errorUsers }
     = await useAsyncData<User[]>(
-        () => $fetch('https://jsonplaceholder.typicode.com/users', { query: { userId: route.params.userId } }),)
+        () => $fetch(`${config.public.apiBase}/users`, { query: { userId: route.params.userId } }),)
 
 const user = computed<User | undefined>(() => users?.value?.[0]);
 
