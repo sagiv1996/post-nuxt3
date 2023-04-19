@@ -10,11 +10,10 @@
 const route = useRoute()
 const config = useRuntimeConfig()
 
-const { data: posts, pending, error } = await useAsyncData<Post[]>(() => $fetch(`${config.public.apiBase}/posts`, {
+const { data: post, pending, error } = await useAsyncData<any>(() => $fetch(`${config.public.apiBase}/posts`, {
     query: { id: route.params.id }
-}));
+}), { transform: (response): Post => response[0] });
 
-const post = computed<Post | undefined>(() => posts?.value?.[0]);
 
 
 </script>

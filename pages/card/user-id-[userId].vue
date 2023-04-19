@@ -15,10 +15,10 @@ const { data: posts, pending: loadingPosts, error: errorPosts }
     = await useAsyncData<Post[]>(
         () => $fetch(`${config.public.apiBase}/posts`, { query: { userId: route.params.userId } }),
     )
-const { data: users, pending: loadingUsers, error: errorUsers }
-    = await useAsyncData<User[]>(
-        () => $fetch(`${config.public.apiBase}/users`, { query: { userId: route.params.userId } }),)
+const { data: user, pending: loadingUsers, error: errorUsers }
+    = await useAsyncData<any>(
+        () => $fetch(`${config.public.apiBase}/users`, { query: { userId: route.params.userId } }),
+        { transform: (response): User => response[0] })
 
-const user = computed<User | undefined>(() => users?.value?.[0]);
 
 </script>
