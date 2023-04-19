@@ -14,7 +14,7 @@
 
 interface Props {
     post: Post
-    actions: postCardAction[]
+    actions: PostCardAction[]
 }
 const { post } = defineProps<Props>()
 </script>
