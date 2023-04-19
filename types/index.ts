@@ -1,5 +1,3 @@
-// ~/types/index.ts
-
 export {};
 
 declare global {
@@ -14,7 +12,6 @@ declare global {
     label: String;
     path: String;
   }
-
   interface User {
     id: Number;
     name: String;
